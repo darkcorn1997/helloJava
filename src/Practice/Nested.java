@@ -30,12 +30,18 @@ public class Nested {
         double weight = scanner.nextDouble();
 
         double BMI = weight / (height * height);
-        if (BMI < 18.5) { return "过轻"; }
-        else if (18.5 <= BMI && BMI < 24) { return "正常"; }
-        else if (24 <= BMI && BMI < 27) { return "过重"; }
-        else if (27 <= BMI && BMI < 30) { return "轻肥"; }
-        else if (30 <= BMI && BMI < 35) { return "中肥"; }
-        else { return "重肥"; }
+        if (BMI < 18.5)
+            return "过轻";
+        else if (18.5 <= BMI && BMI < 24)
+            return "正常";
+        else if (24 <= BMI && BMI < 27)
+            return "过重";
+        else if (27 <= BMI && BMI < 30)
+            return "轻肥";
+        else if (30 <= BMI && BMI < 35)
+            return "中肥";
+        else
+            return "重肥";
 
     }
 
@@ -45,8 +51,10 @@ public class Nested {
         System.out.println("年份：");
         int year = scanner.nextInt();
 
-        if ((year%4 == 0 && year%100 != 0) || year%400 == 0) { return "闰年"; }
-        else { return "非闰年"; }
+        if ((year%4 == 0 && year%100 != 0) || year%400 == 0)
+            return "闰年";
+        else
+            return "非闰年";
     }
 
     public static String Season() {
@@ -64,7 +72,7 @@ public class Nested {
         };
     }
 
-    public static int factorial() {
+    public static int factorial() { //阶乘
         Scanner scanner = new Scanner(System.in);
 
         System.out.println("请输入一个整数");
@@ -99,19 +107,73 @@ public class Nested {
         int sum = 0;
         for (int i = 0; i<= 10; i++) {
             if (i>=1)
-                sum = sum*2 + 1; // S(n) = 2S(n-1)+1
+                sum = sum*2 + 1;  // S(n) = 2S(n-1)+1
             System.out.println("第"+i+"天要了"+sum+"块钱");
         }
 
-        return total;
+        return sum;
+    }
+
+    public static void ContinueAndBreak() {
+        for (int i=0; i<=100; i++) {
+            if (i%3 == 0 || i%5 == 0)
+                continue;
+            System.out.println(i);
+        }
+
+        boolean breakout = false; //是否终止外部循环的标记
+        for (int i = 0; i < 10; i++) {
+
+            for (int j = 1; j < 10; j++) {
+                System.out.println(i+":"+j);
+                if (j%2 == 0) {
+                    breakout = true;
+                    break;
+                }
+            }
+            if (breakout) //判断是否终止外部循环
+                break;
+        }
+
+        outLoop: //使用标签结束外部循环
+        for (int i = 0; i < 10; i++) {
+
+            for (int j = 1; j < 10; j++) {
+                System.out.println(i+":"+j);
+                if (0==j%2)
+                    break outLoop; //如果是双数，结束当前循环
+            }
+        }
+    }
+
+    public static void GoldenRatio() {
+        double temp, min = 1;
+        int m, n;
+        for (int i = 1; i <= 20; i++) {
+            for (int j = 1; j <=20; j++) {
+                if (i%2 == 0 && j%2 == 0)
+                    continue;
+                if (i >= j)
+                    continue;
+                temp = Math.abs((double) i/j - 0.618);
+                if (temp < min) {
+                    min = temp;
+                    m = i;
+                    n = j;
+                    System.out.println(m + " " + n + " " + min);
+                }
+            }
+        }
     }
 
     public static void main(String[] args) {
-        //ScannerPractice();
+        //Nested.ScannerPractice();
         //while (true) { System.out.println(BMI()); }
         //while (true) { System.out.println(LeapYear()); }
         //System.out.println(Season());
         //System.out.println(factorial());
-        System.out.println(Begging());
+        //System.out.println(Begging());
+        //Nested.ContinueAndBreak();
+        Nested.GoldenRatio();
     }
 }
