@@ -148,7 +148,7 @@ public class Nested {
 
     public static void GoldenRatio() {
         double temp, min = 1;
-        int m, n;
+        int m = 0, n = 0;
         for (int i = 1; i <= 20; i++) {
             for (int j = 1; j <=20; j++) {
                 if (i%2 == 0 && j%2 == 0)
@@ -160,7 +160,40 @@ public class Nested {
                     min = temp;
                     m = i;
                     n = j;
-                    System.out.println(m + " " + n + " " + min);
+                    System.out.printf("%d, %d, %f %n", m, n, (double)m/n);
+                }
+            }
+        }
+        System.out.printf("离黄金分割点最近的两个数是：%d / %d = %f", m, n, (double)m/n);
+    }
+
+    public static void Narcissistic() {
+        for (int i = 100; i < 1000; i++) {
+            String num = String.valueOf(i); //int转String
+            //String num = Integer.toString(i);
+
+            int first = Integer.parseInt(Character.toString(num.charAt(0))); //char转int
+            int second = Integer.parseInt(String.valueOf(num.charAt(1)));
+            int third = Character.getNumericValue(num.charAt(2));
+
+            int number = first*first*first + second*second*second + third*third*third;
+
+            if (number == i)
+                System.out.println(i);
+        }
+    }
+
+    public static void Primary() {
+        Start:
+        for (int a = 0; a < 8; a ++) {
+            for (int b = 0; b < 8; b++) {
+                for (int c = 0; c < 14; c++) {
+                    for (int d = 0; d < 10; d++) {
+                        if (a + b == 8 && a + c == 14 && b + d == 10 && c - d == 6) {
+                            System.out.println("a = " + a + "\nb = " + b + "\nc = " + c + "\nd = " + d);
+                            break Start;
+                        }
+                    }
                 }
             }
         }
@@ -174,6 +207,8 @@ public class Nested {
         //System.out.println(factorial());
         //System.out.println(Begging());
         //Nested.ContinueAndBreak();
-        Nested.GoldenRatio();
+        //Nested.GoldenRatio();
+        //Nested.Narcissistic();
+        Nested.Primary();
     }
 }
