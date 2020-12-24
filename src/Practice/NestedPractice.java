@@ -2,7 +2,7 @@ package Practice;
 
 import java.util.Scanner;
 
-public class Nested {
+public class NestedPractice {
     public static void ScannerPractice() {
         Scanner scanner = new Scanner(System.in);
 
@@ -209,6 +209,6 @@ public class Nested {
         //Nested.ContinueAndBreak();
         //Nested.GoldenRatio();
         //Nested.Narcissistic();
-        Nested.Primary();
+        NestedPractice.Primary();
     }
 }
