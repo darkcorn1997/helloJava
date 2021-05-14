@@ -3,11 +3,6 @@ package Practice;
 import java.util.Arrays;
 
 public class ArrayPractice {
-    public static char printGrade(double grade) {
-        return grade >= 90 ? 'A'
-                : grade >= 60 && grade < 90 ? 'B'
-                : grade >= 40 && grade < 60 ? 'C' : 'D';
-    }
 
     public static void MaxAndMinAndReverse() {
         int[] array = new int[5];
@@ -34,9 +29,15 @@ public class ArrayPractice {
         System.out.println("反转数组：" + Arrays.toString(newArray));
     }
 
+    public static int[] ArrayCopy() {   //类方法
+        // copyOfRange(int[] original, int from, int to)
+        // 第一个参数表示源数组，第二个参数表示开始位置(取得到)，第三个参数表示结束位置(取不到)
+        int[] a = new int[] { 18, 62, 68, 82, 65, 9 };
+        return Arrays.copyOfRange(a, 0, 5);
+    }
 
     public static void main(String[] args) {
-        //System.out.println(ArrayPractice.printGrade(40));
         ArrayPractice.MaxAndMinAndReverse();
+        System.out.println(Arrays.toString(ArrayPractice.ArrayCopy()));
     }
 }

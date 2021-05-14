@@ -3,22 +3,6 @@ package Practice;
 import java.util.Scanner;
 
 public class NestedPractice {
-    public static void ScannerPractice() {
-        Scanner scanner = new Scanner(System.in);
-
-        System.out.println("输入整数：");
-        int a = scanner.nextInt();
-        System.out.println("第一个整数："+ a);
-
-        System.out.println("输入浮点数：");
-        double b = scanner.nextDouble();
-        System.out.println("第一个浮点数："+ b);
-
-        System.out.println("输入字符串：");
-        String s1 = scanner.nextLine(); //读取的是换行回车
-        String s2 = scanner.nextLine(); //读取的是输入字符
-        System.out.println("第一个字符串："+ s2);
-    }
 
     public static String BMI() {
         Scanner scanner = new Scanner(System.in);
@@ -200,7 +184,6 @@ public class NestedPractice {
     }
 
     public static void main(String[] args) {
-        //Nested.ScannerPractice();
         //while (true) { System.out.println(BMI()); }
         //while (true) { System.out.println(LeapYear()); }
         //System.out.println(Season());
