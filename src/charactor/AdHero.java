@@ -27,7 +27,7 @@ public class AdHero extends Hero implements AD {
         super.useItem(item);
     }
 
-    //隐藏父类的类方法
+    //通过重写 隐藏父类的类方法
     public static void battleWin() {
         System.out.println("AdHero battle win");
     }

@@ -5,10 +5,19 @@ import property.Item;
 import property.Weapon;
 
 
-public class Hero {
+public class Hero implements Comparable<Hero>{
     private String name;
     private int number;
     private int damage;
+
+    //实现Comparable接口 重写比较算法 从大到小
+    @Override
+    public int compareTo(Hero hero) {
+        if (this.number < hero.number)
+            return 1;
+        else
+            return -1;
+    }
 
     public Hero() {
         System.out.println("new a hero with no para");
@@ -20,11 +29,13 @@ public class Hero {
     public Hero(String name, int number) {
         this.name=name;
         this.number=number;
+        System.out.println("new a hero with name number");
     }
     public Hero(String name, int number, int damage) {
         this.name=name;
         this.number=number;
         this.damage=damage;
+        System.out.println("new a hero with name number damage");
     }
 
     public String getName() {return this.name;}
@@ -66,4 +77,6 @@ public class Hero {
         System.out.println(timo.getDamage());
 
     }
+
+
 }

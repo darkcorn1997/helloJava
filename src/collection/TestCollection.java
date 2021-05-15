@@ -11,10 +11,28 @@ public class TestCollection {
 
         // 初始化5个对象
         for (int i = 0; i < 5; i++) {
-            heroes.add(new Hero("hero " + i));
+            heroes.add(new Hero("hero " + i, i));
         }
-        Hero specialHero = new Hero("special hero");
+        Hero specialHero = new Hero("hero 5", 5);
         heroes.add(specialHero);
+        System.out.println(heroes);
+
+        //一、Hero类实现Comparable接口 不然直接sort报错 不知道比较哪个属性
+        Collections.sort(heroes);
+        System.out.println(heroes);
+
+        //二、实现一个匿名类 从小到大
+        Comparator<Hero> c = new Comparator<Hero>() {
+            @Override
+            public int compare(Hero h1, Hero h2) {
+                if (h1.getNumber() > h2.getNumber())
+                    return 1;
+                else
+                    return -1;
+            }
+        };
+        heroes.sort(c);
+        System.out.println(heroes);
 
         //迭代器遍历
         Iterator<Hero> iterator = heroes.iterator();
@@ -52,9 +70,9 @@ public class TestCollection {
     public static void testLinkedList2() {
         Queue<Hero> heroes = new LinkedList<>();//Deque继承Queue,因此LinkedList还实现了Queue 先进先出队列 FIFO
         //加在队列最后
-        heroes.offer(new Hero("0"));
-        heroes.offer(new Hero("1"));
-        heroes.add(new Hero("2"));
+        heroes.offer(new Hero("ASHE",10));
+        heroes.offer(new Hero("RIVEN",100));
+        heroes.add(new Hero("ZED",50));
         System.out.println(heroes);
         //看看第一个 但不会取出来
         Hero hero = heroes.peek();
@@ -66,10 +84,50 @@ public class TestCollection {
         System.out.println(heroes);
     }
 
+    public static void stream() {
+        //集合框架的聚合操作
+        Random r = new Random();
+        List<Hero> heroes = new ArrayList<Hero>();
+        for (int i = 0; i < 10; i++) {
+            heroes.add(new Hero("hero " + i, r.nextInt(1000), r.nextInt(100)));
+        }
+
+        for (Hero hero : heroes) {
+            System.out.println(hero.getDamage());
+        }
+
+        //传统方式 先排序 从大到小
+        heroes.sort(new Comparator<Hero>() {
+            @Override
+            public int compare(Hero o1, Hero o2) {
+                return o2.getDamage() - o1.getDamage();
+            }
+        });
+
+        for (Hero hero : heroes) {
+            System.out.println("排序后：" + hero.getDamage());
+        }
+
+        Hero hero = heroes.get(2);
+        System.out.println("通过传统方式找出来的hp第三高的英雄名称是:" + hero.getName());
+
+        //聚合方式
+        String name =heroes
+                .stream()
+                .sorted((h1,h2)->h2.getDamage()>h1.getDamage()?1:-1)
+                .skip(2)
+                .map(Hero::getName)
+                .findFirst()
+                .get();
+
+        System.out.println("通过聚合操作找出来的hp第三高的英雄名称是:" + name);
+    }
 
     public static void main(String[] args) {
         //TestCollection.testArrayList();
         //TestCollection.testLinkedList();
-        TestCollection.testLinkedList2();
+        //TestCollection.testLinkedList2();
+        TestCollection.stream();
+
     }
 }
