@@ -10,6 +10,8 @@ public class KillThread extends Thread{
         this.hero2 = h2;
     }
 
+    //重写run方法
+    @Override
     public void run(){
         while(!hero2.isDead()){
             hero1.attackHero(hero2);
