@@ -64,14 +64,12 @@ public class TestThreadPool {
         int sleep = 1000;
 
         while (true) {
-            Runnable task = new Runnable() {
+            threadPool.add(new Runnable() {
                 @Override
                 public void run() {
-                    //System.out.println("执行任务");
-                    //任务可能是打印一句话 可能是访问文件 可能是做排序
+                    System.out.println("执行任务");
                 }
-            };
-            threadPool.add(task);
+            });
             try {
                 Thread.sleep(sleep);
                 sleep = sleep>100?sleep-100:sleep;
