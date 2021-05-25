@@ -1,14 +1,13 @@
 package Thread;
 
-public class testConcurrency {
-    //多线程并发问题
+public class TestConcurrency {
+    //多线程同步问题指的是多个线程同时修改一个数据的时候，导致的问题, 假设盖伦有10000滴血，并且在基地里，同时又被对方多个英雄攻击
 
     public static void main(String[] args) {
         Hero gareen = new Hero("盖伦",10000,50);
         int n = 10000;
         System.out.printf("盖伦的初始血量是 %.0f%n", gareen.hp);
 
-        //多线程同步问题指的是多个线程同时修改一个数据的时候，导致的问题, 假设盖伦有10000滴血，并且在基地里，同时又被对方多个英雄攻击
         //是有多个线程在减少盖伦的hp, 同时又有多个线程在恢复盖伦的hp
 
         Thread[] addThreads = new Thread[n];
