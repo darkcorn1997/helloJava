@@ -37,6 +37,7 @@ public class TestThread {
     public void test4() {
         //匿名类形式
         Thread thread1 = new Thread() {
+            @Override
             public void run() {
                 while (!teemo.isDead()) {
                     //线程临时暂停
@@ -58,6 +59,7 @@ public class TestThread {
         }
 
         Thread thread2 = new Thread() {
+            @Override
             public void run() {
                 while (!leesin.isDead()) {
                     bh.attackHero(leesin);

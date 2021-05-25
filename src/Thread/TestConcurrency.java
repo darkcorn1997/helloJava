@@ -16,6 +16,7 @@ public class TestConcurrency {
         //n个线程增加盖伦的hp
         for (int i=0; i<n; i++) {
             Thread thread = new Thread() {
+                @Override
                 public void run() {
                     //一、使用gareen作为synchronized
                     synchronized (gareen) {
@@ -35,6 +36,7 @@ public class TestConcurrency {
         //n个线程减少盖伦的hp
         for (int i=0; i<n; i++) {
             Thread thread = new Thread() {
+                @Override
                 public void run() {
                     //二、在方法hurt中有synchronized(this)
                     gareen.hurt();
@@ -48,7 +50,7 @@ public class TestConcurrency {
             thread.start();
             reduceThreads[i] = thread;
         }
-        //三、直接用synchronized修饰方法
+        //三、直接用synchronized修饰方法 public synchronized void hurt() {}
         //如果一个类，其方法都是有synchronized修饰的，那么该类就叫做线程安全的类；
         //同一时间，只有一个线程能够进入 这种类的一个实例 去修改数据，进而保证了这个实例中的数据的安全(不会同时被多线程修改而变成脏数据)
 
