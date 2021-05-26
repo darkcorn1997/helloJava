@@ -28,7 +28,7 @@ public class TestCollection {
                 if (h1.getNumber() > h2.getNumber())
                     return 1;
                 else
-                    return -1;
+                    return 0;
             }
         };
         heroes.sort(c);
@@ -52,7 +52,8 @@ public class TestCollection {
     }
 
     public static void testLinkedList() {
-        Deque<Hero> heroes = new LinkedList<>(); //LinkedList实现了双向链表结构Deque以及List,可以很方便的在头尾插入删除数据
+        Deque<Hero> heroes = new LinkedList<>(); //LinkedList实现了双向队列Deque以及List,可以很方便的在头尾插入删除数据
+        // LinkedList的本质是双向链表
         // 链表结构: 与数组结构相比较，数组结构，就好像是电影院，每个位置都有标示，每个位置之间的间隔都是一样的
         // 而链表就相当于佛珠，每个珠子，只连接前一个和后一个，不用关心除此之外的其他佛珠在哪里
         heroes.add(new Hero("0"));
@@ -87,7 +88,7 @@ public class TestCollection {
     public static void stream() {
         //集合框架的聚合操作
         Random r = new Random();
-        List<Hero> heroes = new ArrayList<Hero>();
+        List<Hero> heroes = new ArrayList<>();
         for (int i = 0; i < 10; i++) {
             heroes.add(new Hero("hero " + i, r.nextInt(1000), r.nextInt(100)));
         }
@@ -114,11 +115,11 @@ public class TestCollection {
         //聚合方式
         String name =heroes
                 .stream()
-                .sorted((h1,h2)->h2.getDamage()>h1.getDamage()?1:-1)
+                .sorted((h1,h2)->h2.getDamage()>h1.getDamage()?1:-0)
                 .skip(2)
                 .map(Hero::getName)
                 .findFirst()
-                .get();
+                .orElse(null);
 
         System.out.println("通过聚合操作找出来的hp第三高的英雄名称是:" + name);
     }

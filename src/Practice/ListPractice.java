@@ -3,9 +3,8 @@ package Practice;
 import charactor.Hero;
 
 import java.util.*;
-import java.util.concurrent.LinkedBlockingDeque;
 
-public class Practice3 { //集合遍历，删除掉名字编号是8的倍数的对象
+public class ListPractice { //集合遍历，删除掉名字编号是8的倍数的对象
     public static char getLevel(int grade) {
         return grade>= 90 ? 'A' : grade>=60 ? 'B':'C';
     }

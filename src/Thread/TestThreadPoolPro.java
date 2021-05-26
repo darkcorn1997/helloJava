@@ -15,12 +15,15 @@ public class TestThreadPoolPro {
         //第四个参数TimeUnit.SECONDS 如上
         //第五个参数 new LinkedBlockingQueue() 用来放任务的集合
         //execute方法用于添加新的任务
-        threadPoolExecutor.execute(new Runnable() {
-            @Override
-            public void run() {
-                // TODO Auto-generated method stub
-                System.out.println("任务");
-            }
-        });
+        while (true) {
+            threadPoolExecutor.execute(new Runnable() {
+                @Override
+                public void run() {
+                    // TODO Auto-generated method stub
+                    System.out.printf("线程：%s 执行任务%n", Thread.currentThread().getName());;
+                }
+            });
+        }
+
     }
 }

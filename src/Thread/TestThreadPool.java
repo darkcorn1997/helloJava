@@ -1,9 +1,7 @@
 package Thread;
 
 import java.util.LinkedList;
-import java.util.concurrent.LinkedBlockingQueue;
-import java.util.concurrent.ThreadPoolExecutor;
-import java.util.concurrent.TimeUnit;
+
 
 public class TestThreadPool {
     //线程池大小
@@ -11,7 +9,7 @@ public class TestThreadPool {
     //任务容器
     final LinkedList<Runnable> tasks = new LinkedList<>();
 
-    //构造方法 启动十个线程
+    //类构造方法 启动十个线程
     public TestThreadPool() {
         threadPoolSize = 10;
         synchronized (tasks) {
@@ -35,6 +33,7 @@ public class TestThreadPool {
         public TaskConsumerThread(String name) {
             super(name);
         }
+
         Runnable task;
         @Override
         public void run() {
