@@ -15,7 +15,9 @@ public class TestLambda2 {
         return h.getNumber()>100 && h.getDamage()<50;
     }
 
-    private static void filter(List<Hero> heroes, HeroChecker checker) {
+    private static void
+
+    filter(List<Hero> heroes, HeroChecker checker) {
         for (Hero h : heroes) {
             if (checker.test(h)) {
                 System.out.println(h);
@@ -54,7 +56,7 @@ public class TestLambda2 {
 
         //在lambda中使用静态方法
         filter(heroes, h -> TestLambda2.testHero2(h));
-        //直接引用静态方法
+        //等同于直接引用静态方法
         filter(heroes, TestLambda2::testHero2);
 
         //lambda中引用对象方法
