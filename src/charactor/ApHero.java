@@ -19,6 +19,7 @@ public class ApHero extends AbstractHero implements AP {
     }
 
     public static void main(String[] args) {
-
+        ApHero apHero = new ApHero();
+        apHero.attack();
     }
 }

@@ -16,7 +16,9 @@ public abstract class AbstractHero {
      * public 静态 final的
      * 即便没有显式的声明
      *
-     * 注: 抽象类和接口都可以有实体方法。 接口中的实体方法，叫做默认方法 */
+     * 注: 抽象类和接口都可以有实体方法。 接口中的实体方法，叫做默认方法
+     */
+
     private String name;
 
     private float hp;
@@ -30,5 +32,12 @@ public abstract class AbstractHero {
     public abstract void abstractAttack();
 
     public static void main(String[] args) {
+        //匿名类
+        AbstractHero abstractHero = new AbstractHero() {
+            @Override
+            public void abstractAttack() {
+
+            }
+        };
     }
 }

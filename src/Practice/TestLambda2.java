@@ -1,4 +1,4 @@
-package Practice; /*匿名类方式以及lambda方式对比*/
+package Practice;
 
 import charactor.Hero;
 
@@ -8,16 +8,7 @@ import java.util.Random;
 
 public class TestLambda2 {
 
-    public boolean testHero1(Hero h) {
-        return h.getNumber()>100 && h.getDamage()<50;
-    }
-    public static boolean testHero2(Hero h) {
-        return h.getNumber()>100 && h.getDamage()<50;
-    }
-
-    private static void
-
-    filter(List<Hero> heroes, HeroChecker checker) {
+    private static void filter(List<Hero> heroes, HeroChecker checker) {
         for (Hero h : heroes) {
             if (checker.test(h)) {
                 System.out.println(h);
@@ -25,6 +16,14 @@ public class TestLambda2 {
         }
     }
 
+    public boolean testHero1(Hero h) {
+        return h.getNumber()>100 && h.getDamage()<50;
+    }
+    public static boolean testHero2(Hero h) {
+        return h.getNumber()>100 && h.getDamage()<50;
+    }
+
+    //匿名类方式以及lambda方式对比
     public static void main(String[] args) {
         Random r = new Random();
         List<Hero> heroes = new ArrayList<>();
@@ -55,8 +54,6 @@ public class TestLambda2 {
         filter(heroes, h -> h.getDamage()>100 && h.getDamage()<50);
 
         //在lambda中使用静态方法
-        filter(heroes, h -> TestLambda2.testHero2(h));
-        //等同于直接引用静态方法
         filter(heroes, TestLambda2::testHero2);
 
         //lambda中引用对象方法
