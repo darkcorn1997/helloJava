@@ -1,6 +1,6 @@
 /*接口也支持泛型*/
 
-package collection;
+package dao;
 import charactor.Hero;
 
 public interface Stack<T> { //自定义一个栈接口，先进后出

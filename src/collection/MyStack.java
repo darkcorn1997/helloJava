@@ -1,6 +1,7 @@
 package collection;
 
 import charactor.Hero;
+import dao.Stack;
 import property.Consumables;
 import property.Item;
 import property.Weapon;
